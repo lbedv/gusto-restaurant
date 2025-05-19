@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, Suspense } from 'react';
 import { MapPin } from 'lucide-react';
+import Hero from '../components/home/Hero';
+import FeaturedMenu from '../components/home/FeaturedMenu';
+import AboutSection from '../components/home/AboutSection';
 import ContactForm from '../components/ui/ContactForm';
 
 const HomePage = () => {
@@ -74,6 +77,10 @@ const HomePage = () => {
 
   return (
     <>
+      <Hero />
+      <FeaturedMenu />
+      <AboutSection />
+
       {/* Contact Section */}
       <section className="bg-restaurant-50 py-16">
         <div className="container mx-auto px-4">
