@@ -1,4 +1,6 @@
 import React, { useEffect, useRef } from 'react';
+import PageHeader from '../components/layout/PageHeader';
+import ContactForm from '../components/ui/ContactForm';
 import { MapPin, Phone, Clock, Mail } from 'lucide-react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -67,6 +69,12 @@ const ContactPage = () => {
 
   return (
     <>
+      <PageHeader
+        title="Kontakt"
+        description="Kontaktujte nás nebo nás navštivte"
+        backgroundImage="/images/contact-header.jpg"
+      />
+
       <section className="py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -188,6 +196,7 @@ const ContactPage = () => {
                   kontaktovat prostřednictvím tohoto formuláře a my se vám co nejdříve ozveme.
                 </p>
 
+                <ContactForm />
               </div>
             </div>
           </div>
