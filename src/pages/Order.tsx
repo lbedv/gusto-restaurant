@@ -1,10 +1,10 @@
-
 import React, { useState, useEffect } from 'react';
 import { Cart, CartItem } from '../services/cartService';
 import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
 import PageHeader from '../components/layout/PageHeader';
 import { MinusCircle, PlusCircle, Trash2, ShoppingCart } from 'lucide-react';
+import { useLocalStorage } from '../utils/useLocalStorage';
 
 // Import cart service functions
 import { 
@@ -26,6 +26,7 @@ const OrderPage = () => {
   });
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [orderHistory, setOrderHistory] = useLocalStorage<any[]>('order_history', []);
   
   // Load cart from localStorage on mount
   useEffect(() => {
@@ -117,6 +118,9 @@ const OrderPage = () => {
       // Send this to a backend
       await new Promise(resolve => setTimeout(resolve, 1500));
       
+      // Add to order history
+      setOrderHistory([...orderHistory, order]);
+      
       // Clear cart
       const emptyCart = clearCart();
       setCart(emptyCart);
@@ -166,6 +170,33 @@ const OrderPage = () => {
                 Přejít na menu
               </Link>
             </div>
+            
+            {orderHistory.length > 0 && (
+              <div className="mt-12 text-left">
+                <h3 className="text-xl font-semibold mb-4 text-restaurant-800">
+                  Historie objednávek
+                </h3>
+                <div className="bg-white rounded-lg shadow p-6">
+                  {orderHistory.map((order, idx) => (
+                    <div key={order.id} className={`${idx > 0 ? 'border-t border-gray-200 pt-4 mt-4' : ''}`}>
+                      <div className="flex justify-between items-center mb-2">
+                        <div>
+                          <span className="font-medium">Objednávka {order.id}</span>
+                          <p className="text-sm text-gray-500">
+                            {new Date(order.date).toLocaleDateString()} {new Date(order.date).toLocaleTimeString()}
+                          </p>
+                        </div>
+                        <span className="font-bold">{order.total} Kč</span>
+                      </div>
+                      <p className="text-sm text-gray-600">
+                        {order.items.length} {order.items.length === 1 ? 'položka' : 
+                          (order.items.length >= 2 && order.items.length <= 4) ? 'položky' : 'položek'}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </section>
       </>
@@ -181,7 +212,7 @@ const OrderPage = () => {
       />
       
       <section className="py-12">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4">          
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Cart Items */}
             <div className="lg:col-span-2">
