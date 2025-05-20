@@ -67,6 +67,46 @@ export const addItemToCart = (menuItem: MenuItem, quantity: number = 1, specialR
   return cart;
 };
 
+// Remove item from cart
+export const removeItemFromCart = (menuItemId: number): Cart => {
+  const cart = getCart();
+  
+  cart.items = cart.items.filter(item => item.menuItem.id !== menuItemId);
+  cart.total = calculateTotal(cart.items);
+  
+  // Save to localStorage
+  saveCart(cart);
+  
+  return cart;
+};
+
+// Update item quantity
+export const updateCartItemQuantity = (menuItemId: number, quantity: number): Cart => {
+  const cart = getCart();
+  
+  const itemIndex = cart.items.findIndex(item => item.menuItem.id === menuItemId);
+  if (itemIndex !== -1) {
+    if (quantity > 0) {
+      cart.items[itemIndex].quantity = quantity;
+    } else {
+      // Remove item if quantity is 0 or less
+      cart.items.splice(itemIndex, 1);
+    }
+    
+    cart.total = calculateTotal(cart.items);
+    saveCart(cart);
+  }
+  
+  return cart;
+};
+
+// Clear the cart
+export const clearCart = (): Cart => {
+  const emptyCart = { items: [], total: 0 };
+  saveCart(emptyCart);
+  return emptyCart;
+};
+
 // Calculate total
 export const calculateTotal = (items: CartItem[]): number => {
   return items.reduce((sum, item) => sum + (item.menuItem.price * item.quantity), 0);
