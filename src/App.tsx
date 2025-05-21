@@ -15,7 +15,7 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/gusto-restaurant">
         <Routes>
           <Route path="/" element={<Layout><HomePage /></Layout>} />
           <Route path="/menu" element={<Layout><MenuPage /></Layout>} />

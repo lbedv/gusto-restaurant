@@ -54,10 +54,10 @@ const AboutPage = () => {
                 <video
                   ref={videoRef}
                   className="w-full h-auto"
-                  poster="/images/restaurant-video-poster.jpg"
+                  poster="/gusto-restaurant/images/restaurant-video-poster.jpg"
                   controls
                 >
-                  <source src="/videos/restaurant-promo.mp4" type="video/mp4" />
+                  <source src="/gusto-restaurant/videos/restaurant-promo.mp4" type="video/mp4" />
                   Váš prohlížeč nepodporuje přehrávání videa.
                 </video>
               </div>
@@ -105,7 +105,7 @@ const AboutPage = () => {
               <div className="text-center">
                 <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4">
                   <img
-                    src="/images/chef.jpg"
+                    src="/gusto-restaurant/images/chef.jpg"
                     alt="Šéfkuchař Jan Novák"
                     className="w-full h-full object-cover"
                   />
@@ -122,7 +122,7 @@ const AboutPage = () => {
               <div className="text-center">
                 <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4">
                   <img
-                    src="/images/sous-chef.jpg"
+                    src="/gusto-restaurant/images/sous-chef.jpg"
                     alt="Zástupce šéfkuchaře Marie Svobodová"
                     className="w-full h-full object-cover"
                   />
@@ -139,7 +139,7 @@ const AboutPage = () => {
               <div className="text-center">
                 <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4">
                   <img
-                    src="/images/manager.jpg"
+                    src="/gusto-restaurant/images/manager.jpg"
                     alt="Manažer Petr Kovář"
                     className="w-full h-full object-cover"
                   />

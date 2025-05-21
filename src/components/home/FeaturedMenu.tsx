@@ -8,7 +8,7 @@ const featuredItems = [
     name: 'Hovězí Wellington',
     description: 'Hovězí svíčková s houbovou směsí zabalená v listovém těstě',
     price: 345,
-    image: '/images/beef-wellington.jpg',
+    image: '/gusto-restaurant/images/beef-wellington.jpg',
     category: 'Hlavní chody'
   },
   {
@@ -16,7 +16,7 @@ const featuredItems = [
     name: 'Středomořský salát',
     description: 'Čerstvý salát s grilovanou zeleninou, feta sýrem a olivami',
     price: 195,
-    image: '/images/mediterranean-salad.jpg',
+    image: '/gusto-restaurant/images/mediterranean-salad.jpg',
     category: 'Předkrmy'
   },
   {
@@ -24,7 +24,7 @@ const featuredItems = [
     name: 'Čokoládový fondant',
     description: 'Teplý čokoládový dezert s tekutým středem a vanilkovou zmrzlinou',
     price: 145,
-    image: '/images/chocolate-fondant.jpg',
+    image: '/gusto-restaurant/images/chocolate-fondant.jpg',
     category: 'Dezerty'
   }
 ];
