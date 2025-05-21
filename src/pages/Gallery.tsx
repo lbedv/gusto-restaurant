@@ -5,13 +5,13 @@ import { ChevronLeft, ChevronRight, Maximize2, X } from 'lucide-react';
 const galleryImages = [
   {
     id: 1,
-    src: '/images/gallery-1.jpg',
+    src: '/images/restaurant-interior.jpg',
     alt: 'Interiér restaurace',
     category: 'interior'
   },
   {
     id: 2,
-    src: '/images/gallery-2.jpg',
+    src: '/images/chef-cooking.jpg',
     alt: 'Šéfkuchař při práci',
     category: 'staff'
   },
@@ -35,13 +35,13 @@ const galleryImages = [
   },
   {
     id: 6,
-    src: '/images/gallery-3.jpg',
+    src: '/images/outdoor-seating.jpg',
     alt: 'Venkovní posezení',
     category: 'interior'
   },
   {
     id: 7,
-    src: '/images/gallery-4.jpg',
+    src: '/images/bar.jpg',
     alt: 'Bar',
     category: 'interior'
   },
@@ -65,13 +65,13 @@ const galleryImages = [
   },
   {
     id: 11,
-    src: '/images/gallery-5.jpg',
+    src: '/images/restaurant-staff.jpg',
     alt: 'Personál restaurace',
     category: 'staff'
   },
   {
     id: 12,
-    src: '/images/gallery-6.jpg',
+    src: '/images/private-lounge.jpg',
     alt: 'Privátní salonek',
     category: 'interior'
   }
@@ -156,7 +156,6 @@ const GalleryPage = () => {
       <PageHeader 
         title="Galerie" 
         description="Prohlédněte si fotografie z naší restaurace"
-        backgroundImage="/images/gallery-header.jpg"
       />
       
       <section className="py-12">
@@ -216,7 +215,7 @@ const GalleryPage = () => {
                 className="relative overflow-hidden rounded-lg shadow-md group cursor-pointer"
                 onClick={() => openLightbox(index)}
               >
-                <div className="aspect-w-3 aspect-h-2">
+                <div className="aspect-w-3 aspect-h-2 h-64">
                   <img
                     src={image.src}
                     alt={image.alt}

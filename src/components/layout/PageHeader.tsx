@@ -15,7 +15,7 @@ const PageHeader = ({
       className="relative pt-32 pb-16 md:pt-48 md:pb-24 bg-restaurant-900 overflow-hidden"
     >
       <div 
-        className="absolute inset-0 bg-cover bg-center opacity-30 z-0" 
+        className="absolute inset-0 bg-cover opacity-40 bg-center z-0" 
         style={{ backgroundImage: `url(${backgroundImage})` }}
       />
       

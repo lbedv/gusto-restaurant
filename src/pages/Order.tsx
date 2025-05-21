@@ -150,7 +150,6 @@ const OrderPage = () => {
         <PageHeader 
           title="Objednávka" 
           description="Vytvořte si vlastní objednávku z našeho menu"
-          backgroundImage="/images/order-header.jpg"
         />
         
         <section className="py-16">
@@ -208,7 +207,6 @@ const OrderPage = () => {
       <PageHeader 
         title="Objednávka" 
         description="Vytvořte si vlastní objednávku z našeho menu"
-        backgroundImage="/images/order-header.jpg"
       />
       
       <section className="py-12">

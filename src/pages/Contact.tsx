@@ -70,7 +70,6 @@ const ContactPage = () => {
       <PageHeader
         title="Kontakt"
         description="Kontaktujte nás nebo nás navštivte"
-        backgroundImage="/images/contact-header.jpg"
       />
       <section className="py-12">
         <div className="container mx-auto px-4">
