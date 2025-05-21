@@ -73,22 +73,22 @@ const Header = () => {
 
 const NavLinks = ({ onClick }: { onClick?: () => void }) => (
   <>
-    <Link to="/" className="hover:text-restaurant-600 font-medium transition-colors" onClick={onClick}>
+    <Link to="/" className="px-2 py-2 hover:text-restaurant-600 bg-restaurant-100/30 rounded-md font-medium transition-colors " onClick={onClick}>
       Domů
     </Link>
-    <Link to="/menu" className="hover:text-restaurant-600 font-medium transition-colors" onClick={onClick}>
+    <Link to="/menu" className="px-2 py-2 hover:text-restaurant-600 bg-restaurant-100/30 rounded-md font-medium transition-colors" onClick={onClick}>
       Menu
     </Link>
-    <Link to="/order" className="hover:text-restaurant-600 font-medium transition-colors" onClick={onClick}>
+    <Link to="/order" className="px-2 py-2 hover:text-restaurant-600 bg-restaurant-100/30 rounded-md font-medium transition-colors" onClick={onClick}>
       Objednávka
     </Link>
-    <Link to="/gallery" className="hover:text-restaurant-600 font-medium transition-colors" onClick={onClick}>
+    <Link to="/gallery" className="px-2 py-2 hover:text-restaurant-600 bg-restaurant-100/30 rounded-md font-medium transition-colors" onClick={onClick}>
       Galerie
     </Link>
-    <Link to="/about" className="hover:text-restaurant-600 font-medium transition-colors" onClick={onClick}>
+    <Link to="/about" className="px-2 py-2 hover:text-restaurant-600 bg-restaurant-100/30 rounded-md font-medium transition-colors" onClick={onClick}>
       O nás
     </Link>
-    <Link to="/contact" className="hover:text-restaurant-600 font-medium transition-colors" onClick={onClick}>
+    <Link to="/contact" className="px-2 py-2 hover:text-restaurant-600 bg-restaurant-100/30 rounded-md font-medium transition-colors" onClick={onClick}>
       Kontakt
     </Link>
   </>

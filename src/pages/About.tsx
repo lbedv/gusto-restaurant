@@ -20,7 +20,6 @@ const AboutPage = () => {
       <PageHeader 
         title="O nás" 
         description="Seznamte se s naší restaurací a našimi hodnotami"
-        backgroundImage="/images/about-header.jpg"
       />
       
       <section className="py-12">

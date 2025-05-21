@@ -4,11 +4,15 @@ import { ChefHat, BookOpen } from 'lucide-react';
 const Hero = () => {
   return (
     <section className="relative h-screen flex items-center">
-      {/* Gradient background */}
+
+      {/* Background image */}
       <div 
-        className="absolute inset-0 bg-gradient-to-br from-gray-800 via-stone-600/80 to-amber-800/70 animate-gradient-shift z-0"
-      ></div>
-      
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0" 
+        style={{ backgroundImage: 'url(/images/hero-bg.jpg)' }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-restaurant-950/80 via-restaurant-900/60 to-transparent"></div>
+      </div>
+
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-2xl text-white">

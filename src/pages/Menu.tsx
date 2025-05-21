@@ -67,7 +67,6 @@ const MenuPage = () => {
       <PageHeader 
         title="Naše menu" 
         description="Prozkoumejte naši nabídku plnou chutných pokrmů"
-        backgroundImage="/images/menu-header.jpg"
       />
       
       <section className="py-12">

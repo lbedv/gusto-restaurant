@@ -6,14 +6,14 @@ const AboutSection = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="relative">
-            <div className="relative z-10">
+            <div className="relative z-0">
               <img 
                 src="/images/restaurant-interior.jpg" 
                 alt="Interiér restaurace" 
                 className="rounded-lg shadow-xl"
               />
             </div>
-            <div className="absolute -bottom-6 -right-6 w-2/3 h-48 rounded-lg z-0 hidden md:block">
+            <div className="absolute -bottom-6 -right-6 w-2/3 h-48 rounded-lg z-10 hidden md:block">
               <img 
                 src="/images/chef-cooking.jpg" 
                 alt="Šéfkuchař při práci" 
