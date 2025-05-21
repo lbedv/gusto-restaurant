@@ -23,7 +23,7 @@ const menuItems: MenuItem[] = [
     name: 'Hovězí Wellington',
     description: 'Hovězí svíčková s houbovou směsí zabalená v listovém těstě, servírovaná s glazírovanou zeleninou a demi-glace omáčkou',
     price: 345,
-    image: '/images/beef-wellington.jpg',
+    image: '/gusto-restaurant/images/beef-wellington.jpg',
     category: 'main',
     allergens: [1, 3, 7],
     featured: true
@@ -33,7 +33,7 @@ const menuItems: MenuItem[] = [
     name: 'Středomořský salát',
     description: 'Čerstvý salát s grilovanou zeleninou, feta sýrem, olivami a bylinkovým dresinkem',
     price: 195,
-    image: '/images/mediterranean-salad.jpg',
+    image: '/gusto-restaurant/images/mediterranean-salad.jpg',
     category: 'starter',
     allergens: [7],
     featured: true
@@ -43,7 +43,7 @@ const menuItems: MenuItem[] = [
     name: 'Čokoládový fondant',
     description: 'Teplý čokoládový dezert s tekutým středem, podávaný s vanilkovou zmrzlinou a lesním ovocem',
     price: 145,
-    image: '/images/chocolate-fondant.jpg',
+    image: '/gusto-restaurant/images/chocolate-fondant.jpg',
     category: 'dessert',
     allergens: [1, 3, 7],
     featured: true
@@ -53,7 +53,7 @@ const menuItems: MenuItem[] = [
     name: 'Caesar salát s kuřecím masem',
     description: 'Římský salát s grilovaným kuřecím masem, parmazánem, krutony a klasickým caesar dresinkem',
     price: 215,
-    image: '/images/caesar-salad.jpg',
+    image: '/gusto-restaurant/images/caesar-salad.jpg',
     category: 'starter',
     allergens: [1, 3, 4, 7]
   },
@@ -62,7 +62,7 @@ const menuItems: MenuItem[] = [
     name: 'Kachní prsa',
     description: 'Pomalu pečená kachní prsa s pomerančovou omáčkou, servírovaná s bramborovým pyré a karamelizovanou červenou řepou',
     price: 325,
-    image: '/images/duck-breast.jpg',
+    image: '/gusto-restaurant/images/duck-breast.jpg',
     category: 'main',
     allergens: [7]
   },
@@ -71,7 +71,7 @@ const menuItems: MenuItem[] = [
     name: 'Tiramisu',
     description: 'Klasický italský dezert s mascarpone, kávou, likérem a kakaem',
     price: 135,
-    image: '/images/tiramisu.jpg',
+    image: '/gusto-restaurant/images/tiramisu.jpg',
     category: 'dessert',
     allergens: [1, 3, 7]
   },
@@ -80,7 +80,7 @@ const menuItems: MenuItem[] = [
     name: 'Krevetový koktejl',
     description: 'Šťavnaté krevety v koktejlové omáčce podávané na ledovém salátě',
     price: 185,
-    image: '/images/shrimp-cocktail.jpg',
+    image: '/gusto-restaurant/images/shrimp-cocktail.jpg',
     category: 'starter',
     allergens: [2, 3, 10]
   },
@@ -89,7 +89,7 @@ const menuItems: MenuItem[] = [
     name: 'Risotto s hříbky',
     description: 'Krémové risotto s lesními hříbky, tymiánem a hoblinkami parmazánu',
     price: 235,
-    image: '/images/mushroom-risotto.jpg',
+    image: '/gusto-restaurant/images/mushroom-risotto.jpg',
     category: 'main',
     allergens: [7]
   },
@@ -98,7 +98,7 @@ const menuItems: MenuItem[] = [
     name: 'Jehněčí kotletky',
     description: 'Grilované jehněčí kotletky s bylinkovým máslem a rozmarýnovými bramborami',
     price: 375,
-    image: '/images/lamb-chops.jpg',
+    image: '/gusto-restaurant/images/lamb-chops.jpg',
     category: 'main',
     allergens: [7]
   },
@@ -107,7 +107,7 @@ const menuItems: MenuItem[] = [
     name: 'Panna Cotta',
     description: 'Jemná vanilková panna cotta s malinovou omáčkou a čerstvým ovocem',
     price: 125,
-    image: '/images/panna-cotta.jpg',
+    image: '/gusto-restaurant/images/panna-cotta.jpg',
     category: 'dessert',
     allergens: [7]
   },
@@ -116,7 +116,7 @@ const menuItems: MenuItem[] = [
     name: 'Caprese salát',
     description: 'Plátky mozzarelly a rajčat s bazalkou, olivovým olejem a balsamikovým krémem',
     price: 165,
-    image: '/images/caprese-salad.jpg',
+    image: '/gusto-restaurant/images/caprese-salad.jpg',
     category: 'starter',
     allergens: [7]
   },
@@ -125,7 +125,7 @@ const menuItems: MenuItem[] = [
     name: 'Losos s citronovou omáčkou',
     description: 'Filet z lososa s citronovou omáčkou podávaný s hráškovou rýží a grilovaným chřestem',
     price: 295,
-    image: '/images/salmon-lemon.jpg',
+    image: '/gusto-restaurant/images/salmon-lemon.jpg',
     category: 'main',
     allergens: [4, 7]
   }
@@ -138,7 +138,7 @@ const drinks: MenuItem[] = [
     name: 'Espresso',
     description: 'Silná, koncentrovaná káva',
     price: 55,
-    image: '/images/espresso.jpg',
+    image: '/gusto-restaurant/images/espresso.jpg',
     category: 'drinks'
   },
   {
@@ -146,7 +146,7 @@ const drinks: MenuItem[] = [
     name: 'Cappuccino',
     description: 'Espresso s napěněným mlékem',
     price: 65,
-    image: '/images/cappuccino.jpg',
+    image: '/gusto-restaurant/images/cappuccino.jpg',
     category: 'drinks',
     allergens: [7]
   },
@@ -155,7 +155,7 @@ const drinks: MenuItem[] = [
     name: 'Rozlévaná vína',
     description: 'Výběr kvalitních českých a zahraničních vín (0,15l)',
     price: 85,
-    image: '/images/wine.jpg',
+    image: '/gusto-restaurant/images/wine.jpg',
     category: 'drinks',
     allergens: [12]
   },
@@ -164,7 +164,7 @@ const drinks: MenuItem[] = [
     name: 'Domácí limonáda',
     description: 'Osvěžující limonáda z čerstvého ovoce (0,4l)',
     price: 75,
-    image: '/images/lemonade.jpg',
+    image: '/gusto-restaurant/images/lemonade.jpg',
     category: 'drinks'
   },
   {
@@ -172,7 +172,7 @@ const drinks: MenuItem[] = [
     name: 'Točené pivo',
     description: 'Místní ležák (0,5l)',
     price: 55,
-    image: '/images/beer.jpg',
+    image: '/gusto-restaurant/images/beer.jpg',
     category: 'drinks',
     allergens: [1]
   }

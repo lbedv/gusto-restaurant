@@ -5,73 +5,73 @@ import { ChevronLeft, ChevronRight, Maximize2, X } from 'lucide-react';
 const galleryImages = [
   {
     id: 1,
-    src: '/images/restaurant-interior.jpg',
+    src: '/gusto-restaurant/images/restaurant-interior.jpg',
     alt: 'Interiér restaurace',
     category: 'interior'
   },
   {
     id: 2,
-    src: '/images/chef-cooking.jpg',
+    src: '/gusto-restaurant/images/chef-cooking.jpg',
     alt: 'Šéfkuchař při práci',
     category: 'staff'
   },
   {
     id: 3,
-    src: '/images/beef-wellington.jpg',
+    src: '/gusto-restaurant/images/beef-wellington.jpg',
     alt: 'Hovězí Wellington',
     category: 'food'
   },
   {
     id: 4,
-    src: '/images/mediterranean-salad.jpg',
+    src: '/gusto-restaurant/images/mediterranean-salad.jpg',
     alt: 'Středomořský salát',
     category: 'food'
   },
   {
     id: 5,
-    src: '/images/chocolate-fondant.jpg',
+    src: '/gusto-restaurant/images/chocolate-fondant.jpg',
     alt: 'Čokoládový fondant',
     category: 'food'
   },
   {
     id: 6,
-    src: '/images/outdoor-seating.jpg',
+    src: '/gusto-restaurant/images/outdoor-seating.jpg',
     alt: 'Venkovní posezení',
     category: 'interior'
   },
   {
     id: 7,
-    src: '/images/bar.jpg',
+    src: '/gusto-restaurant/images/bar.jpg',
     alt: 'Bar',
     category: 'interior'
   },
   {
     id: 8,
-    src: '/images/caesar-salad.jpg',
+    src: '/gusto-restaurant/images/caesar-salad.jpg',
     alt: 'Caesar salát',
     category: 'food'
   },
   {
     id: 9,
-    src: '/images/duck-breast.jpg',
+    src: '/gusto-restaurant/images/duck-breast.jpg',
     alt: 'Kachní prsa',
     category: 'food'
   },
   {
     id: 10,
-    src: '/images/tiramisu.jpg',
+    src: '/gusto-restaurant/images/tiramisu.jpg',
     alt: 'Tiramisu',
     category: 'food'
   },
   {
     id: 11,
-    src: '/images/restaurant-staff.jpg',
+    src: '/gusto-restaurant/images/restaurant-staff.jpg',
     alt: 'Personál restaurace',
     category: 'staff'
   },
   {
     id: 12,
-    src: '/images/private-lounge.jpg',
+    src: '/gusto-restaurant/images/private-lounge.jpg',
     alt: 'Privátní salonek',
     category: 'interior'
   }

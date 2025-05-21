@@ -8,7 +8,7 @@ type PageHeaderProps = {
 const PageHeader = ({ 
   title, 
   description, 
-  backgroundImage = '/images/restaurant-header-bg.jpg' 
+  backgroundImage = '/gusto-restaurant/images/restaurant-header-bg.jpg' 
 }: PageHeaderProps) => {
   return (
     <section 
