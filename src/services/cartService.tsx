@@ -1,15 +1,11 @@
-import { MenuItem } from './menuService';
+/**
+ * @deprecated Use CartContext from context/CartContext.tsx instead
+ * This file is kept for backward compatibility
+ * 
+ * The CartContext provides better state management without prop drilling
+ */
 
-export type CartItem = {
-  menuItem: MenuItem;
-  quantity: number;
-  specialRequests?: string;
-};
-
-export type Cart = {
-  items: CartItem[];
-  total: number;
-};
+import { MenuItem, CartItem, Cart } from '../types';
 
 // Local storage key for cart
 const CART_STORAGE_KEY = 'restaurant_cart';

@@ -1,20 +1,5 @@
-// Menu Types
-export type MenuItem = {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-  allergens?: number[];
-  category: string;
-  featured?: boolean;
-};
-
-export type MenuCategory = {
-  id: string;
-  name: string;
-  items: MenuItem[];
-};
+// Import types from central types file
+import { MenuItem, MenuCategory } from '../types';
 
 // Menu data
 const menuItems: MenuItem[] = [
