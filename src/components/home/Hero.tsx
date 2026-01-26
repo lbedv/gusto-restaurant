@@ -1,7 +1,12 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChefHat, BookOpen } from 'lucide-react';
 
-const Hero = () => {
+/**
+ * Hero section component
+ * Displays main landing page banner with call-to-action buttons
+ */
+const Hero: React.FC = () => {
   return (
     <section className="relative h-screen flex items-center">
 

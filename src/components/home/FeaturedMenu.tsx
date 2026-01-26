@@ -1,8 +1,10 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { MenuItem } from '../../types';
 
 // Sample featured menu items
-const featuredItems = [
+const featuredItems: MenuItem[] = [
   {
     id: 1,
     name: 'Hovězí Wellington',
@@ -29,7 +31,11 @@ const featuredItems = [
   }
 ];
 
-const FeaturedMenu = () => {
+/**
+ * Featured Menu component
+ * Displays a selection of featured restaurant menu items
+ */
+const FeaturedMenu: React.FC = () => {
   return (
     <section className="py-16 bg-restaurant-50">
       <div className="container mx-auto px-4">

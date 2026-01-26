@@ -1,19 +1,25 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import PageHeader from '../components/layout/PageHeader';
 import ContactForm from '../components/ui/ContactForm';
 import { MapPin, Phone, Clock, Mail } from 'lucide-react';
 
-const ContactPage = () => {
-  const mapRef = useRef(null);
-  const mapInstanceRef = useRef(null);
-  const restaurantLocation = [50.0874654, 14.4214764];
+const ContactPage: React.FC = () => {
+  const mapRef = useRef<HTMLDivElement>(null);
+  // Type: 'any' is necessary here because Leaflet types are not fully compatible with dynamic imports
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const mapInstanceRef = useRef<any>(null);
 
   useEffect(() => {
-    // Dynamically import Leaflet and its CSS
+    let isMounted = true;
+    const restaurantLocation: [number, number] = [50.0874654, 14.4214764];
+    
     Promise.all([
       import('leaflet'),
       import('leaflet/dist/leaflet.css'),
     ]).then(([L]) => {
+      // Check if component is still mounted before accessing refs
+      if (!isMounted) return;
+      
       // Initialize Leaflet map
       if (mapRef.current && !mapInstanceRef.current) {
         mapInstanceRef.current = L.default.map(mapRef.current).setView(restaurantLocation, 15);
@@ -33,6 +39,7 @@ const ContactPage = () => {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(
             (position) => {
+              if (!isMounted || !mapInstanceRef.current) return;
               const userLocation = [position.coords.latitude, position.coords.longitude];
               L.default.marker(userLocation)
                 .addTo(mapInstanceRef.current)
@@ -44,7 +51,9 @@ const ContactPage = () => {
             },
             (error) => {
               console.warn('Geolocation error:', error.message);
-              mapInstanceRef.current.setView(restaurantLocation, 15);
+              if (isMounted && mapInstanceRef.current) {
+                mapInstanceRef.current.setView(restaurantLocation, 15);
+              }
             },
             { timeout: 10000, enableHighAccuracy: true }
           );
@@ -58,6 +67,7 @@ const ContactPage = () => {
 
     // Cleanup on component unmount
     return () => {
+      isMounted = false;
       if (mapInstanceRef.current) {
         mapInstanceRef.current.remove();
         mapInstanceRef.current = null;

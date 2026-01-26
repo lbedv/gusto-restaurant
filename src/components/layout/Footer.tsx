@@ -1,7 +1,12 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Clock, Phone } from 'lucide-react';
 
-const Footer = () => {
+/**
+ * Footer component
+ * Displays restaurant contact information, navigation, and copyright
+ */
+const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
   
   return (

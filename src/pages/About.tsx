@@ -2,7 +2,7 @@
 import React, { useRef } from 'react';
 import PageHeader from '../components/layout/PageHeader';
 
-const AboutPage = () => {
+const AboutPage: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const toggleVideo = () => {

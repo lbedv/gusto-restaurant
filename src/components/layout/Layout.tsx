@@ -2,10 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import { Toaster } from 'sonner';
-
-type LayoutProps = {
-  children: React.ReactNode;
-};
+import { LayoutProps } from '../../types';
 
 const Layout = ({ children }: LayoutProps) => {
   return (

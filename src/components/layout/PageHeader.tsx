@@ -1,9 +1,5 @@
-
-type PageHeaderProps = {
-  title: string;
-  description?: string;
-  backgroundImage?: string;
-};
+import React from 'react';
+import { PageHeaderProps } from '../../types';
 
 const PageHeader = ({ 
   title, 
