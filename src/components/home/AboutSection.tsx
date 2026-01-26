@@ -1,6 +1,11 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-const AboutSection = () => {
+/**
+ * About Section component
+ * Displays brief introduction about the restaurant
+ */
+const AboutSection: React.FC = () => {
   return (
     <section className="py-16">
       <div className="container mx-auto px-4">

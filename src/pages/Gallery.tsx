@@ -1,8 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import PageHeader from '../components/layout/PageHeader';
 import { ChevronLeft, ChevronRight, Maximize2, X } from 'lucide-react';
 
-const galleryImages = [
+type GalleryImage = {
+  id: number;
+  src: string;
+  alt: string;
+  category: 'interior' | 'staff' | 'food';
+};
+
+const galleryImages: GalleryImage[] = [
   {
     id: 1,
     src: '/gusto-restaurant/images/restaurant-interior.jpg',
@@ -77,11 +84,11 @@ const galleryImages = [
   }
 ];
 
-const GalleryPage = () => {
+const GalleryPage: React.FC = () => {
   const [filter, setFilter] = useState<string>('all');
   const [lightbox, setLightbox] = useState<boolean>(false);
   const [currentImage, setCurrentImage] = useState<number>(0);
-  const [filteredImages, setFilteredImages] = useState(galleryImages);
+  const [filteredImages, setFilteredImages] = useState<GalleryImage[]>(galleryImages);
   const lightboxRef = useRef<HTMLDivElement>(null);
   
   // Filter images
@@ -89,9 +96,13 @@ const GalleryPage = () => {
     if (filter === 'all') {
       setFilteredImages(galleryImages);
     } else {
-      setFilteredImages(galleryImages.filter(image => image.category === filter));
+      setFilteredImages(galleryImages.filter(image => image.category === filter as GalleryImage['category']));
     }
   }, [filter]);
+  
+  const navigateGallery = useCallback((direction: number) => {
+    setCurrentImage(prev => (prev + direction + filteredImages.length) % filteredImages.length);
+  }, [filteredImages.length]);
   
   // Handle ESC key to close lightbox
   useEffect(() => {
@@ -109,7 +120,7 @@ const GalleryPage = () => {
     
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [lightbox, currentImage]);
+  }, [lightbox, navigateGallery]);
   
   // Handle click outside lightbox to close it
   useEffect(() => {
@@ -141,15 +152,10 @@ const GalleryPage = () => {
     };
   }, [lightbox]);
   
-  const openLightbox = (index: number) => {
+  const openLightbox = useCallback((index: number) => {
     setCurrentImage(index);
     setLightbox(true);
-  };
-  
-  const navigateGallery = (direction: number) => {
-    const newIndex = (currentImage + direction + filteredImages.length) % filteredImages.length;
-    setCurrentImage(newIndex);
-  };
+  }, []);
 
   return (
     <>

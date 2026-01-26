@@ -1,12 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+
+type NavLinksProps = {
+  onClick?: () => void;
+};
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleMenu = useCallback(() => {
+    setIsMenuOpen(prev => !prev);
+  }, []);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -71,7 +77,7 @@ const Header = () => {
   );
 };
 
-const NavLinks = ({ onClick }: { onClick?: () => void }) => (
+const NavLinks = ({ onClick }: NavLinksProps) => (
   <>
     <Link to="/" className="px-2 py-2 hover:text-restaurant-600 bg-restaurant-100/30 rounded-md font-medium transition-colors " onClick={onClick}>
       Domů
