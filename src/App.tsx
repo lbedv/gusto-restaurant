@@ -2,6 +2,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { CartProvider } from "./context/CartContext";
 import Layout from "./components/layout/Layout";
 import HomePage from "./pages/Home";
 import MenuPage from "./pages/Menu";
@@ -26,20 +27,22 @@ const ScrollToTop = () => {
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <BrowserRouter basename="/gusto-restaurant">
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Layout><HomePage /></Layout>} />
-          <Route path="/menu" element={<Layout><MenuPage /></Layout>} />
-          <Route path="/order" element={<Layout><OrderPage /></Layout>} />
-          <Route path="/gallery" element={<Layout><GalleryPage /></Layout>} />
-          <Route path="/about" element={<Layout><AboutPage /></Layout>} />
-          <Route path="/contact" element={<Layout><ContactPage /></Layout>} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <CartProvider>
+      <TooltipProvider>
+        <BrowserRouter basename="/gusto-restaurant">
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Layout><HomePage /></Layout>} />
+            <Route path="/menu" element={<Layout><MenuPage /></Layout>} />
+            <Route path="/order" element={<Layout><OrderPage /></Layout>} />
+            <Route path="/gallery" element={<Layout><GalleryPage /></Layout>} />
+            <Route path="/about" element={<Layout><AboutPage /></Layout>} />
+            <Route path="/contact" element={<Layout><ContactPage /></Layout>} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </CartProvider>
   </QueryClientProvider>
 );
 
