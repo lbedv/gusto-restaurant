@@ -1,11 +1,11 @@
-import React, { createContext, useContext, useState, useCallback, ReactNode, useMemo, useEffect } from 'react';
+import React, { createContext, useState, useCallback, ReactNode, useMemo, useEffect } from 'react';
 import { Cart, CartItem, MenuItem } from '../types';
 
 /**
  * Cart Context for managing shopping cart globally
  */
 
-type CartContextType = {
+export type CartContextType = {
   cart: Cart;
   addItem: (menuItem: MenuItem, quantity: number, specialRequests?: string) => void;
   removeItem: (menuItemId: number) => void;
@@ -16,6 +16,8 @@ type CartContextType = {
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
+
+export { CartContext };
 
 const CART_STORAGE_KEY = 'restaurant_cart';
 
@@ -156,14 +158,4 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   );
 };
 
-/**
- * Custom hook to use CartContext
- * Throws error if used outside CartProvider
- */
-export const useCart = (): CartContextType => {
-  const context = useContext(CartContext);
-  if (!context) {
-    throw new Error('useCart must be used within CartProvider');
-  }
-  return context;
-};
+
