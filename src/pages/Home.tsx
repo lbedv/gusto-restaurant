@@ -144,7 +144,7 @@ const HomePage: React.FC = () => {
                 </div>
               </div>
               
-              <div className="h-[300px] bg-gray-200 rounded-lg overflow-hidden" ref={mapRef}></div>
+              <div className="h-[300px] bg-gray-200 rounded-lg overflow-hidden relative z-0 [&_.leaflet-control]:!z-10" ref={mapRef}></div>
             </div>
           </div>
         </div>

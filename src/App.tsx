@@ -29,7 +29,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <CartProvider>
       <TooltipProvider>
-        <BrowserRouter basename="/gusto-restaurant">
+        <BrowserRouter basename="/gusto-restaurant/">
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<Layout><HomePage /></Layout>} />
