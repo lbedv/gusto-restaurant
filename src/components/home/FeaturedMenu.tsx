@@ -1,14 +1,19 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { MenuItem } from '../../types';
+import beefWellingtonImg from '../../assets/images/menu/beef-wellington.webp';
+import mediterraneanSaladImg from '../../assets/images/menu/mediterranean-salad.webp';
+import chocolateFondantImg from '../../assets/images/menu/chocolate-fondant.webp';
 
 // Sample featured menu items
-const featuredItems = [
+const featuredItems: MenuItem[] = [
   {
     id: 1,
     name: 'Hovězí Wellington',
     description: 'Hovězí svíčková s houbovou směsí zabalená v listovém těstě',
     price: 345,
-    image: '/gusto-restaurant/images/beef-wellington.jpg',
+    image: beefWellingtonImg,
     category: 'Hlavní chody'
   },
   {
@@ -16,7 +21,7 @@ const featuredItems = [
     name: 'Středomořský salát',
     description: 'Čerstvý salát s grilovanou zeleninou, feta sýrem a olivami',
     price: 195,
-    image: '/gusto-restaurant/images/mediterranean-salad.jpg',
+    image: mediterraneanSaladImg,
     category: 'Předkrmy'
   },
   {
@@ -24,12 +29,16 @@ const featuredItems = [
     name: 'Čokoládový fondant',
     description: 'Teplý čokoládový dezert s tekutým středem a vanilkovou zmrzlinou',
     price: 145,
-    image: '/gusto-restaurant/images/chocolate-fondant.jpg',
+    image: chocolateFondantImg,
     category: 'Dezerty'
   }
 ];
 
-const FeaturedMenu = () => {
+/**
+ * Featured Menu component
+ * Displays a selection of featured restaurant menu items
+ */
+const FeaturedMenu: React.FC = () => {
   return (
     <section className="py-16 bg-restaurant-50">
       <div className="container mx-auto px-4">
@@ -49,6 +58,7 @@ const FeaturedMenu = () => {
                 <img 
                   src={item.image} 
                   alt={item.name} 
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                 />
               </div>

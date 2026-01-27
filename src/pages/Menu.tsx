@@ -1,23 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { getMenuItemsByCategory, allergens } from '../services/menuService';
-import { addItemToCart } from '../services/cartService';
+import React, { useState, useEffect, useCallback } from 'react';
+import { getMenuItemsByCategory, allergens } from '../constants/menuData';
+import { useCart } from '../hooks/useCart';
 import { toast } from 'sonner';
 import PageHeader from '../components/layout/PageHeader';
 import { Info, Plus } from 'lucide-react';
 
 const MenuPage = () => {
+  const { addItem } = useCart();
   const [activeCategory, setActiveCategory] = useState<string>('starter');
   const menuCategories = getMenuItemsByCategory();
   const [showAllergens, setShowAllergens] = useState(false);
   
   // Handle smooth scrolling to categories
-  const scrollToCategory = (categoryId: string) => {
+  const scrollToCategory = useCallback((categoryId: string) => {
     setActiveCategory(categoryId);
     const element = document.getElementById(`category-${categoryId}`);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  };
+  }, []);
   
   // Handle intersection observer to update active category
   useEffect(() => {
@@ -48,7 +49,7 @@ const MenuPage = () => {
   }, [menuCategories]);
   
   // Handle adding items to cart
-  const handleAddToCart = (itemId: number) => {
+  const handleAddToCart = useCallback((itemId: number) => {
     const category = menuCategories.find(cat => 
       cat.items.some(item => item.id === itemId)
     );
@@ -56,11 +57,11 @@ const MenuPage = () => {
     if (category) {
       const item = category.items.find(item => item.id === itemId);
       if (item) {
-        addItemToCart(item, 1);
+        addItem(item, 1);
         toast.success(`${item.name} přidán do košíku`);
       }
     }
-  };
+  }, [menuCategories, addItem]);
 
   return (
     <>

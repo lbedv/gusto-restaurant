@@ -1,54 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import { Cart, CartItem } from '../services/cartService';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
 import PageHeader from '../components/layout/PageHeader';
 import { MinusCircle, PlusCircle, Trash2, ShoppingCart } from 'lucide-react';
 import { useLocalStorage } from '../utils/useLocalStorage';
+import { useCart } from '../hooks/useCart';
+import { OrderFormData, Cart, CartItem } from '../types';
 
-// Import cart service functions
-import { 
-  getCart, 
-  updateCartItemQuantity, 
-  removeItemFromCart,
-  clearCart,
-  saveCart
-} from '../services/cartService';
+type OrderRecord = {
+  id: string;
+  date: string;
+  items: CartItem[];
+  total: number;
+  customer: Partial<OrderFormData>;
+};
 
-const OrderPage = () => {
-  const [cart, setCart] = useState<Cart>({ items: [], total: 0 });
-  const [customerInfo, setCustomerInfo] = useState({
+const OrderPage: React.FC = () => {
+  const { cart, removeItem, updateQuantity, clearCart: clearCartContext } = useCart();
+  const [customerInfo, setCustomerInfo] = useState<Partial<OrderFormData>>({
     name: '',
     email: '',
     phone: '',
     address: '',
-    note: ''
   });
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [orderHistory, setOrderHistory] = useLocalStorage<any[]>('order_history', []);
-  
-  // Load cart from localStorage on mount
-  useEffect(() => {
-    const loadedCart = getCart();
-    setCart(loadedCart);
-  }, []);
+  const [orderHistory, setOrderHistory] = useLocalStorage<OrderRecord[]>('order_history', []);
   
   // Update quantity
-  const handleQuantityChange = (itemId: number, newQuantity: number) => {
-    const updatedCart = updateCartItemQuantity(itemId, newQuantity);
-    setCart(updatedCart);
-  };
+  const handleQuantityChange = useCallback((itemId: number, newQuantity: number) => {
+    updateQuantity(itemId, newQuantity);
+  }, [updateQuantity]);
   
   // Remove item
-  const handleRemoveItem = (itemId: number) => {
-    const updatedCart = removeItemFromCart(itemId);
-    setCart(updatedCart);
+  const handleRemoveItem = useCallback((itemId: number) => {
+    removeItem(itemId);
     toast.success('Položka byla odstraněna z košíku');
-  };
+  }, [removeItem]);
   
   // Handle form input change
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setCustomerInfo(prev => ({
       ...prev,
@@ -62,36 +53,36 @@ const OrderPage = () => {
         [name]: ''
       }));
     }
-  };
+  }, [formErrors]);
   
   // Validate form
-  const validateForm = () => {
+  const validateForm = useCallback(() => {
     const errors: Record<string, string> = {};
     
-    if (!customerInfo.name.trim()) {
+    if (!customerInfo.name?.trim()) {
       errors.name = 'Vyplňte prosím své jméno';
     }
     
-    if (!customerInfo.email.trim()) {
+    if (!customerInfo.email?.trim()) {
       errors.email = 'Vyplňte prosím svůj email';
     } else if (!/\S+@\S+\.\S+/.test(customerInfo.email)) {
       errors.email = 'Zadejte platnou emailovou adresu';
     }
     
-    if (!customerInfo.phone.trim()) {
+    if (!customerInfo.phone?.trim()) {
       errors.phone = 'Vyplňte prosím své telefonní číslo';
     }
     
-    if (!customerInfo.address.trim()) {
+    if (!customerInfo.address?.trim()) {
       errors.address = 'Vyplňte prosím svou adresu';
     }
     
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
-  };
+  }, [customerInfo]);
   
   // Submit order
-  const handleSubmitOrder = async (e: React.FormEvent) => {
+  const handleSubmitOrder = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (cart.items.length === 0) {
@@ -107,7 +98,7 @@ const OrderPage = () => {
     
     try {
       // Create order object
-      const order = {
+      const order: OrderRecord = {
         id: `ORD-${Date.now()}`,
         date: new Date().toISOString(),
         items: cart.items,
@@ -122,8 +113,7 @@ const OrderPage = () => {
       setOrderHistory([...orderHistory, order]);
       
       // Clear cart
-      const emptyCart = clearCart();
-      setCart(emptyCart);
+      clearCartContext();
       
       // Reset form
       setCustomerInfo({
@@ -131,17 +121,16 @@ const OrderPage = () => {
         email: '',
         phone: '',
         address: '',
-        note: ''
       });
       
-      toast.success('Objednávka byla úspěšně odeslána!');
+      toast.success('Обjednávка byla úspěšně odeslána!');
     } catch (error) {
       console.error('Error submitting order:', error);
       toast.error('Došlo k chybě při zpracování objednávky');
     } finally {
       setIsSubmitting(false);
     }
-  };
+  }, [cart, validateForm, customerInfo, orderHistory, setOrderHistory, clearCartContext]);
   
   // Empty cart message
   if (cart.items.length === 0) {
@@ -384,9 +373,9 @@ const OrderPage = () => {
                       Poznámka k objednávce
                     </label>
                     <textarea
-                      id="note"
-                      name="note"
-                      value={customerInfo.note}
+                      id="specialRequests"
+                      name="specialRequests"
+                      value={customerInfo.specialRequests || ''}
                       onChange={handleInputChange}
                       rows={3}
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-restaurant-400"

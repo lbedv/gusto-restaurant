@@ -1,4 +1,5 @@
 import animate from 'tailwindcss-animate';
+import radix from 'tailwindcss-radix';
 
 export default {
   darkMode: ['class', 'class'],
@@ -133,5 +134,5 @@ export default {
   		}
   	}
   },
-  plugins: [animate, require("tailwindcss-animate")],
+  plugins: [animate, radix],
 };

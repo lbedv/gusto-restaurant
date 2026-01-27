@@ -1,40 +1,50 @@
-
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { toast } from 'sonner';
 
-const ContactForm = () => {
-  const [formData, setFormData] = useState({
+type ContactFormData = {
+  name: string;
+  email: string;
+  phone?: string;
+  message: string;
+};
+
+/**
+ * ContactForm component
+ * Displays a contact/inquiry form with validation
+ */
+const ContactForm: React.FC = () => {
+  const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
     phone: '',
-    message: ''
+    message: '',
   });
   
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const validateForm = () => {
+  const validateForm = useCallback(() => {
     const errors: Record<string, string> = {};
     
-    if (!formData.name.trim()) {
+    if (!formData.name?.trim()) {
       errors.name = 'Prosím zadejte své jméno';
     }
     
-    if (!formData.email.trim()) {
+    if (!formData.email?.trim()) {
       errors.email = 'Prosím zadejte svůj e-mail';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       errors.email = 'Prosím zadejte platný e-mail';
     }
     
-    if (!formData.message.trim()) {
+    if (!formData.message?.trim()) {
       errors.message = 'Prosím zadejte zprávu';
     }
     
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
-  };
+  }, [formData]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -48,9 +58,9 @@ const ContactForm = () => {
         [name]: ''
       }));
     }
-  };
+  }, [formErrors]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!validateForm()) {
@@ -71,7 +81,7 @@ const ContactForm = () => {
         name: '',
         email: '',
         phone: '',
-        message: ''
+        message: '',
       });
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -79,7 +89,7 @@ const ContactForm = () => {
     } finally {
       setIsSubmitting(false);
     }
-  };
+  }, [formData, validateForm]);
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6" noValidate>

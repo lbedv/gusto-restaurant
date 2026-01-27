@@ -1,6 +1,13 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
+import restaurantInteriorImg from '../../assets/images/gallery/restaurant-interior-thumb.webp';
+import chefCookingImg from '../../assets/images/gallery/chef-cooking-thumb.webp';
 
-const AboutSection = () => {
+/**
+ * About Section component
+ * Displays brief introduction about the restaurant
+ */
+const AboutSection: React.FC = () => {
   return (
     <section className="py-16">
       <div className="container mx-auto px-4">
@@ -8,15 +15,17 @@ const AboutSection = () => {
           <div className="relative">
             <div className="relative z-0">
               <img 
-                src="/gusto-restaurant/images/restaurant-interior.jpg" 
+                src={restaurantInteriorImg}
                 alt="Interiér restaurace" 
+                loading="lazy"
                 className="rounded-lg shadow-xl"
               />
             </div>
             <div className="absolute -bottom-6 -right-6 w-2/3 h-48 rounded-lg z-10 hidden md:block">
               <img 
-                src="/gusto-restaurant/images/chef-cooking.jpg" 
+                src={chefCookingImg}
                 alt="Šéfkuchař při práci" 
+                loading="lazy"
                 className="w-full h-full object-cover rounded-lg shadow-xl"
               />
             </div>
