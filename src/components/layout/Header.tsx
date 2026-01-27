@@ -42,10 +42,12 @@ const Header = () => {
   }, [isMenuOpen]);
 
   return (
-    <header className={`fixed w-full z-30 transition-all duration-300 ${
-      isScrolled ? 'bg-background/95 backdrop-blur-sm shadow-md py-2' : 'bg-transparent py-4'
+    <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 h-16 md:h-auto ${
+      isMenuOpen || isScrolled 
+        ? 'bg-background shadow-md' 
+        : 'bg-transparent'
     }`}>
-      <div className="container mx-auto px-4 flex justify-between items-center">
+      <div className="container mx-auto px-4 py-3 md:py-3 flex justify-between items-center h-full">
         <Link to="/" className="text-2xl md:text-3xl font-bold font-serif text-restaurant-800">
           Gusto
         </Link>
@@ -58,7 +60,7 @@ const Header = () => {
         {/* Mobile menu button */}
         <button 
           onClick={toggleMenu}
-          className="md:hidden text-restaurant-800 focus:outline-none"
+          className="md:hidden text-restaurant-800 focus:outline-none z-50"
           aria-label={isMenuOpen ? "Zavřít menu" : "Otevřít menu"}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -67,7 +69,7 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="fixed inset-0 top-16 bg-background z-20 md:hidden animate-fade-in">
+        <div className="fixed left-0 right-0 top-16 bottom-0 bg-background z-30 md:hidden animate-fade-in overflow-y-auto">
           <nav className="flex flex-col items-center justify-center h-full space-y-8 text-xl">
             <NavLinks onClick={toggleMenu} />
           </nav>

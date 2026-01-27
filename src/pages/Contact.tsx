@@ -86,8 +86,8 @@ const ContactPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
               <h2 className="text-2xl font-bold text-restaurant-900 mb-6">Kde nás najdete</h2>
-              <div className="bg-white rounded-lg shadow-md overflow-hidden mb-8">
-                <div className="h-[400px] bg-gray-200" ref={mapRef}></div>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden mb-8 relative z-0">
+                <div className="h-[400px] bg-gray-200 [&_.leaflet-control]:!z-10" ref={mapRef}></div>
                 <div className="p-6">
                   <div className="flex items-start mb-4">
                     <MapPin className="h-5 w-5 text-restaurant-600 mr-3 mt-1" />
