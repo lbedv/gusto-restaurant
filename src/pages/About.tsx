@@ -1,6 +1,11 @@
 
 import React, { useRef } from 'react';
 import PageHeader from '../components/layout/PageHeader';
+import videoPoster from '../assets/videos/restaurant-video-poster.webp';
+import videoSource from '../assets/videos/restaurant-promo.mp4';
+import chefImg from '../assets/images/stuff/chef.webp';
+import sousChefsImg from '../assets/images/stuff/sous-chef.webp';
+import managerImg from '../assets/images/stuff/manager.webp';
 
 const AboutPage: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -54,10 +59,10 @@ const AboutPage: React.FC = () => {
                 <video
                   ref={videoRef}
                   className="w-full h-auto"
-                  poster="/gusto-restaurant/images/restaurant-video-poster.jpg"
+                  poster={videoPoster}
                   controls
                 >
-                  <source src="/gusto-restaurant/videos/restaurant-promo.mp4" type="video/mp4" />
+                  <source src={videoSource} type="video/mp4" />
                   Váš prohlížeč nepodporuje přehrávání videa.
                 </video>
               </div>
@@ -105,8 +110,9 @@ const AboutPage: React.FC = () => {
               <div className="text-center">
                 <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4">
                   <img
-                    src="/gusto-restaurant/images/chef.jpg"
+                    src={chefImg}
                     alt="Šéfkuchař Jan Novák"
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -122,8 +128,9 @@ const AboutPage: React.FC = () => {
               <div className="text-center">
                 <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4">
                   <img
-                    src="/gusto-restaurant/images/sous-chef.jpg"
+                    src={sousChefsImg}
                     alt="Zástupce šéfkuchaře Marie Svobodová"
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -139,8 +146,9 @@ const AboutPage: React.FC = () => {
               <div className="text-center">
                 <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4">
                   <img
-                    src="/gusto-restaurant/images/manager.jpg"
+                    src={managerImg}
                     alt="Manažer Petr Kovář"
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                 </div>

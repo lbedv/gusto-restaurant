@@ -1,10 +1,35 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import PageHeader from '../components/layout/PageHeader';
 import { ChevronLeft, ChevronRight, Maximize2, X } from 'lucide-react';
+import restaurantInteriorThumb from '../assets/images/gallery/restaurant-interior-thumb.webp';
+import restaurantInteriorFull from '../assets/images/gallery/restaurant-interior-full.webp';
+import chefCookingThumb from '../assets/images/gallery/chef-cooking-thumb.webp';
+import chefCookingFull from '../assets/images/gallery/chef-cooking-full.webp';
+import outdoorSeatingThumb from '../assets/images/gallery/outdoor-seating-thumb.webp';
+import outdoorSeatingFull from '../assets/images/gallery/outdoor-seating-full.webp';
+import barThumb from '../assets/images/gallery/bar-thumb.webp';
+import barFull from '../assets/images/gallery/bar-full.webp';
+import restaurantStaffThumb from '../assets/images/gallery/restaurant-staff-thumb.webp';
+import restaurantStaffFull from '../assets/images/gallery/restaurant-staff-full.webp';
+import privateLoungeThumb from '../assets/images/gallery/private-lounge-thumb.webp';
+import privateLoungeFull from '../assets/images/gallery/private-lounge-full.webp';
+import beefWellingtonImg from '../assets/images/menu/beef-wellington.webp';
+import beefWellingtonFull from '../assets/images/gallery/beef-wellington-full.webp';
+import mediterraneanSaladImg from '../assets/images/menu/mediterranean-salad.webp';
+import mediterraneanSaladFull from '../assets/images/gallery/mediterranean-salad-full.webp';
+import chocolateFondantImg from '../assets/images/menu/chocolate-fondant.webp';
+import chocolateFondantFull from '../assets/images/gallery/chocolate-fondant-full.webp';
+import caesarSaladImg from '../assets/images/menu/caesar-salad.webp';
+import caesarSaladFull from '../assets/images/gallery/caesar-salad-full.webp';
+import lambChopsImg from '../assets/images/menu/lamb-chops.webp';
+import lambChopsFull from '../assets/images/gallery/lamb-chops-full.webp';
+import cappucinoImg from '../assets/images/menu/cappuccino.webp';
+import cappuctioFull from '../assets/images/gallery/cappuccino-full.webp';
 
 type GalleryImage = {
   id: number;
-  src: string;
+  thumb: string;
+  full: string;
   alt: string;
   category: 'interior' | 'staff' | 'food';
 };
@@ -12,73 +37,85 @@ type GalleryImage = {
 const galleryImages: GalleryImage[] = [
   {
     id: 1,
-    src: '/gusto-restaurant/images/restaurant-interior.jpg',
+    thumb: restaurantInteriorThumb,
+    full: restaurantInteriorFull,
     alt: 'Interiér restaurace',
     category: 'interior'
   },
   {
     id: 2,
-    src: '/gusto-restaurant/images/chef-cooking.jpg',
+    thumb: chefCookingThumb,
+    full: chefCookingFull,
     alt: 'Šéfkuchař při práci',
     category: 'staff'
   },
   {
     id: 3,
-    src: '/gusto-restaurant/images/beef-wellington.jpg',
+    thumb: beefWellingtonImg,
+    full: beefWellingtonFull,
     alt: 'Hovězí Wellington',
     category: 'food'
   },
   {
     id: 4,
-    src: '/gusto-restaurant/images/mediterranean-salad.jpg',
+    thumb: mediterraneanSaladImg,
+    full: mediterraneanSaladFull,
     alt: 'Středomořský salát',
     category: 'food'
   },
   {
     id: 5,
-    src: '/gusto-restaurant/images/chocolate-fondant.jpg',
+    thumb: chocolateFondantImg,
+    full: chocolateFondantFull,
     alt: 'Čokoládový fondant',
     category: 'food'
   },
   {
     id: 6,
-    src: '/gusto-restaurant/images/outdoor-seating.jpg',
+    thumb: outdoorSeatingThumb,
+    full: outdoorSeatingFull,
     alt: 'Venkovní posezení',
     category: 'interior'
   },
   {
     id: 7,
-    src: '/gusto-restaurant/images/bar.jpg',
+    thumb: barThumb,
+    full: barFull,
     alt: 'Bar',
     category: 'interior'
   },
   {
     id: 8,
-    src: '/gusto-restaurant/images/caesar-salad.jpg',
+    thumb: caesarSaladImg,
+    full: caesarSaladFull,
     alt: 'Caesar salát',
     category: 'food'
   },
   {
     id: 9,
-    src: '/gusto-restaurant/images/duck-breast.jpg',
+    thumb: lambChopsImg,
+    full: lambChopsFull,
     alt: 'Kachní prsa',
     category: 'food'
   },
   {
     id: 10,
-    src: '/gusto-restaurant/images/tiramisu.jpg',
+    thumb: cappucinoImg,
+    full: cappuctioFull,
     alt: 'Tiramisu',
     category: 'food'
   },
   {
     id: 11,
-    src: '/gusto-restaurant/images/restaurant-staff.jpg',
+    thumb: restaurantStaffThumb,
+    full: restaurantStaffFull,
     alt: 'Personál restaurace',
     category: 'staff'
   },
   {
     id: 12,
-    src: '/gusto-restaurant/images/private-lounge.jpg',
+    thumb: privateLoungeThumb,
+    full: privateLoungeFull,
     alt: 'Privátní salonek',
     category: 'interior'
   }
@@ -223,7 +260,7 @@ const GalleryPage: React.FC = () => {
               >
                 <div className="aspect-w-3 aspect-h-2 h-64">
                   <img
-                    src={image.src}
+                    src={image.thumb}
                     alt={image.alt}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     loading="lazy"
@@ -253,7 +290,7 @@ const GalleryPage: React.FC = () => {
                 
                 <div className="relative w-full h-[80vh] flex items-center justify-center">
                   <img
-                    src={filteredImages[currentImage].src}
+                    src={filteredImages[currentImage].full}
                     alt={filteredImages[currentImage].alt}
                     className="max-h-full max-w-full object-contain"
                   />
