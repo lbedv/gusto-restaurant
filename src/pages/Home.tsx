@@ -42,7 +42,7 @@ const HomePage: React.FC = () => {
           navigator.geolocation.getCurrentPosition(
             (position) => {
               if (!isMounted || !mapInstanceRef.current) return;
-              const userLocation = [position.coords.latitude, position.coords.longitude];
+              const userLocation: [number, number] = [position.coords.latitude, position.coords.longitude];
               L.default.marker(userLocation)
                 .addTo(mapInstanceRef.current)
                 .bindPopup('Vaše poloha')
@@ -64,7 +64,8 @@ const HomePage: React.FC = () => {
         }
 
         // Fix Leaflet marker icons (if needed)
-        delete L.default.Icon.Default.prototype._getIconUrl;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        delete (L.default.Icon.Default.prototype as any)._getIconUrl;
         L.default.Icon.Default.mergeOptions({
           iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
           iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',

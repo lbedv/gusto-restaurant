@@ -4,7 +4,7 @@ import { toast } from 'sonner';
 import PageHeader from '../components/layout/PageHeader';
 import { MinusCircle, PlusCircle, Trash2, ShoppingCart } from 'lucide-react';
 import { useLocalStorage } from '../utils/useLocalStorage';
-import { useCart } from '../context/CartContext';
+import { useCart } from '../hooks/useCart';
 import { OrderFormData, Cart, CartItem } from '../types';
 
 type OrderRecord = {

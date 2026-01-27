@@ -40,7 +40,7 @@ const ContactPage: React.FC = () => {
           navigator.geolocation.getCurrentPosition(
             (position) => {
               if (!isMounted || !mapInstanceRef.current) return;
-              const userLocation = [position.coords.latitude, position.coords.longitude];
+              const userLocation: [number, number] = [position.coords.latitude, position.coords.longitude];
               L.default.marker(userLocation)
                 .addTo(mapInstanceRef.current)
                 .bindPopup('Vaše poloha')
