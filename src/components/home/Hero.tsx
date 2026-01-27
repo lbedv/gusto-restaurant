@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChefHat, BookOpen } from 'lucide-react';
+import heroSmall from '../../assets/images/hero/hero-sm.webp';
+import heroMedium from '../../assets/images/hero/hero-md.webp';
+import heroLarge from '../../assets/images/hero/hero-lg.webp';
 
 /**
  * Hero section component
@@ -11,12 +14,16 @@ const Hero: React.FC = () => {
     <section className="relative h-screen flex items-center">
 
       {/* Background image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0" 
-        style={{ backgroundImage: 'url(/gusto-restaurant/images/hero-bg.jpg)' }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-restaurant-950/80 via-restaurant-900/60 to-transparent"></div>
-      </div>
+      <picture className="absolute inset-0 z-0">
+        <source media="(min-width: 1024px)" srcSet={heroLarge} />
+        <source media="(min-width: 768px)" srcSet={heroMedium} />
+        <img 
+          src={heroSmall}
+          alt="Hero banner"
+          className="w-full h-full object-cover"
+        />
+      </picture>
+      <div className="absolute inset-0 bg-gradient-to-r from-restaurant-950/80 via-restaurant-900/60 to-transparent z-0"></div>
 
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
