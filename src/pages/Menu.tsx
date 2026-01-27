@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { getMenuItemsByCategory, allergens } from '../services/menuService';
+import { getMenuItemsByCategory, allergens } from '../constants/menuData';
 import { useCart } from '../hooks/useCart';
 import { toast } from 'sonner';
 import PageHeader from '../components/layout/PageHeader';
