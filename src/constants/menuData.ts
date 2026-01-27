@@ -1,4 +1,3 @@
-// Import types from central types file
 import { MenuItem, MenuCategory } from '../types';
 import beefWellingtonImg from '../assets/images/menu/beef-wellington.webp';
 import mediterraneanSaladImg from '../assets/images/menu/mediterranean-salad.webp';
@@ -18,7 +17,6 @@ import wineImg from '../assets/images/menu/wine.webp';
 import lemonadeImg from '../assets/images/menu/lemonade.webp';
 import beerImg from '../assets/images/menu/beer.webp';
 
-// Menu data
 const menuItems: MenuItem[] = [
   {
     id: 1,
@@ -199,11 +197,6 @@ export const allergens: Record<number, string> = {
   12: 'Oxid siřičitý a siřičitany',
   13: 'Vlčí bob',
   14: 'Měkkýši'
-};
-
-// Get all menu items
-export const getMenuItems = () => {
-  return allMenuItems;
 };
 
 // Get menu items by category
