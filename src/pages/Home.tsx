@@ -19,6 +19,15 @@ const HomePage: React.FC = () => {
       import('leaflet'),
       import('leaflet/dist/leaflet.css'),
     ]).then(([L]) => {
+      // Fix Leaflet marker icons path
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      delete (L.default.Icon.Default.prototype as any)._getIconUrl;
+      L.default.Icon.Default.mergeOptions({
+        iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+        iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+        shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+      });
+
       // Check if component is still mounted before accessing refs
       if (!isMounted) return;
       
@@ -62,15 +71,6 @@ const HomePage: React.FC = () => {
         } else {
           console.warn('Geolocation is not supported by this browser.');
         }
-
-        // Fix Leaflet marker icons (if needed)
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        delete (L.default.Icon.Default.prototype as any)._getIconUrl;
-        L.default.Icon.Default.mergeOptions({
-          iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-          iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-          shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-        });
       }
     }).catch((error) => {
       console.error('Failed to load Leaflet:', error);
