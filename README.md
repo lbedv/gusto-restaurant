@@ -26,7 +26,7 @@ npm run lint
 
 ## Live Demo
 
-https://lebediev92.github.io/gusto-restaurant/
+https://lbedv.github.io/gusto-restaurant/
 
 ## Technologies & Architecture
 
