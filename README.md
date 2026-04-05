@@ -1,6 +1,7 @@
 # Gusto Restaurant - Modern Web Application
 
 > A full-featured restaurant web application built with modern technologies and best practices.
+<img width="1888" height="901" alt="image" src="https://github.com/user-attachments/assets/37a6d179-c762-4521-ac4c-9d59f9cd25d0" />
 
 ## Quick Start
 
